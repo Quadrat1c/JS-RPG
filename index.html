@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body bgcolor="#1a1111">
+    <main>
+        <section>
+            <button id="btnSpawnEnemy" onclick="spawnEnemy()">Spawn Enemy</button>
+        </section>
+        <section id="statistics">
+            <div>
+                <h3>Character</h3>
+                <p>Level: <span id="pLevel"></span></p>
+                <p>Experience: <span id="pExp"></span></p>
+                <p>Health: <span id="pCurrentHp"></span>/<span id="pMaxHp"></span></p>
+                <p>Mana: <span id="pCurrentMp"></span>/<span id="pMaxMp"></span></p>
+                <p>Strength: <span id="pStrength"></span></p>
+                <p>Intellect: <span id="pIntellect"></span></p>
+                <p>Agility: <span id="pAgility"></span></p>
+            </div>
+            <div>
+                <h3>Skills</h3>
+                <p>Melee: <span id="pMelee"></span></p>
+            </div>
+            <div>
+                <h3>Inventory</h3>
+                <p>Gold: <span id="pGold"></span></p>
+                <p>Ruby: <span id="pRuby"></span></p>
+                <p>Sapphire: <span id="pSapphire"></span></p>
+                <p>Emerald: <span id="pEmerald"></span></p>
+                <p><span id="slot0"></span></p>
+                <p><span id="slot1"></span></p>
+                <p><span id="slot2"></span></p>
+                <p><span id="slot3"></span></p>
+                <p><span id="slot4"></span></p>
+                <p><span id="slot5"></span></p>
+            </div>
+        </section>
+    </main>
+    <!--
+        <table style="width:100%;">
+            <tr>
+                <td>
+                    <h3><font color="red">Player1 Health: </font><label id="player1Health"></label></h3><br />
+                </td>
+                <td>
+                    <h3><font color="blue">Player2 Health: </font><label id="player2Health"></label></h3><br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <form>
+                        <input type="radio" id="rdBtn1" name="radioBtnAbility" value="flameThrower" checked> <img src="imgs/SkillIcons/flameThrower.png" alt="Flamethrower" style="width:40px;height:40px;" onclick="radioButtonChecked(1)"> Flamethrower<br>
+                        <input type="radio" id="rdBtn2" name="radioBtnAbility" value="waterBurst"> <img src="imgs/SkillIcons/waterBurst.png" alt="Flamethrower" style="width:40px;height:40px;" onclick="radioButtonChecked(2)"> Water Burst<br>
+                        <input type="radio" id="rdBtn3" name="radioBtnAbility" value="earthHail"> <img src="imgs/SkillIcons/earthHail.png" alt="Flamethrower" style="width:40px;height:40px;" onclick="radioButtonChecked(3)"> Earth Hail<br>
+                        <input type="radio" id="rdBtn4" name="radioBtnAbility" value="airCutter"> <img src="imgs/SkillIcons/airCutter.png" alt="Flamethrower" style="width:40px;height:40px;" onclick="radioButtonChecked(4)"> Air Cutter<br>
+                        <input type="radio" id="rdBtn5" name="radioBtnAbility" value="mist"> <img src="imgs/SkillIcons/mist.png" alt="Flamethrower" style="width:40px;height:40px;" onclick="radioButtonChecked(5)"> Mist<br>
+                    </form> 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="attack()">Attack</button>
+                </td>
+                <td>
+                    <button >Attack</button>
+                </td>
+            </tr>
+        </table>
+        -->
+        <!--
+        <textarea id="txtArea1" rows = "10" cols = "60" name = "console"></textarea><br>
+        -->
+    </body>
+    <!-- keep initialize at bottom of the html page so it runs last
+         if the javascript code runs before the -->
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="elements.js"></script>
+    <script type="text/javascript" src="player.js"></script>
+    <script type="text/javascript" src="enemy.js"></script>
+    <script>init();</script>
+</html>
