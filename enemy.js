@@ -15,3 +15,4 @@ function enemy(I, ename, hp, minDmg, maxDmg, exp, lvl, desc) {
 
 enemyTypes.push(enemy(0, "Thief", 30, 3, 5, 9, 1, "Thief's description."));
 enemyTypes.push(enemy(0, "Zombie", 15, 9, 14, 6, 1, "Zombie's description."));
+enemyTypes.push(enemy(0, "Skeleton", 19, 1, 22, 8, 1, "Skeleton's description."));

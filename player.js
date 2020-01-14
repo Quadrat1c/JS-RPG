@@ -6,6 +6,8 @@ let player = {
         currentHp: 100,
         maxMp: 50,
         currentMp: 50,
+        minDamage: 3,
+        maxDamage: 7,
         strength: 0,
         intellect: 0,
         agility: 0,
@@ -25,6 +27,14 @@ let player = {
             passive: true,
         },
     },
+};
+
+const playerExp = {
+    1: 0,
+    2: 250,
+    3: 4000,
+    4: 16000,
+    5: 64000,
 };
 
 const skillExp = {

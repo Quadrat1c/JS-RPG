@@ -1,5 +1,8 @@
 let tickCount = 0;
 let InBattle = false;
+let killBonus = 0;
+let skillPoints = 0;
+let statPoints = 0;
 
 let currentEnemyIndex;
 let currentEnemyHp = 0;
@@ -25,6 +28,21 @@ function attack() {
     document.getElementById('btnAttack').disabled = true;
     console.log('attacking');
 
+    let baseDamage = Math.round(Math.random()*player.stats.maxDamage) + player.stats.minDamage;
+    let meleeDamage = 0;
+    let totalDamage = 0;
+    console.log("Base Damage Dealt: " + baseDamage);
+    for (let i = 0; i < player.skills.melee.lvl; i++) {
+        meleeDamage += baseDamage * 0.10;
+    }
+    console.log("Melee Damage: " + meleeDamage);
+    totalDamage = baseDamage + meleeDamage;
+    currentEnemyHp -= totalDamage;
+
+    // Calculate Enemy damage
+    if (currentEnemyHp > 0) {
+        player.stats.currentHp -= Math.round(Math.random() * enemyTypes[currentEnemyIndex].maxDamage) + enemyTypes[currentEnemyIndex].minDamage;
+    }
     /*
     let selectedAbility;
 
@@ -45,15 +63,49 @@ function attack() {
     console.log(playerAttack);
     update();
      */
+    update();
+}
+
+function levelUp() {
+    skillPoints++;
+    statPoints += 2;
+}
+
+function enemyDeath() {
+    let xpMultiplier = killBonus + 1;
+    let exp = enemyTypes[currentEnemyIndex].experience * xpMultiplier;
+    console.log("You gained: " + exp + " experience.");
+    // Calculate Experience
+
+    player.stats.experience += exp;
+    player.skills.melee.exp += exp;
+    // Loot
+
+    killBonus++;
+    update();
+}
+
+function town() {
+    if (InBattle) {
+        console.log("You are in Battle!");
+        return;
+    } else {
+        // Do town thing
+        console.log("Healed in Town.");
+        player.stats.currentHp = player.stats.maxHp;
+        killBonus = 0;
+        update();
+    }
 }
 
 // Updates ever tick or when an action happens
 const update = () => {
-    console.log(tickCount);
+    console.log("Tick: " + tickCount);
+    document.getElementById('killBonus').innerText = killBonus;
     // Character Stats
     document.getElementById('pLevel').innerText = player.stats.level;
     document.getElementById('pExp').innerText = player.stats.experience;
-    document.getElementById('pCurrentHp').innerText = player.stats.currentHp;
+    document.getElementById('pCurrentHp').innerText = player.stats.currentHp.toFixed(0);
     document.getElementById('pMaxHp').innerText = player.stats.maxHp;
     document.getElementById('pCurrentMp').innerText = player.stats.currentMp;
     document.getElementById('pMaxMp').innerText = player.stats.maxMp;
@@ -70,9 +122,24 @@ const update = () => {
 
     if (InBattle) {
         console.log('We are in battle.');
-
-
+        document.getElementById('eCurrentHealth').innerText = currentEnemyHp.toFixed(0);
         document.getElementById('btnAttack').disabled = false;
+
+        // Enemy had died
+        if (currentEnemyHp <= 0) {
+            console.log("Enemy has been killed.");
+            InBattle = false;
+            //document.getElementById('btnAttack').disabled = true;
+            document.getElementById('btnSpawnEnemy').disabled = false;
+            // Run Death code.
+            enemyDeath();
+        }
+
+        // Player has died
+        if (player.stats.currentHp <= 0) {
+            alert("You have Died! Your character is lost.");
+            window.location.reload(false);
+        }
     } else {
         document.getElementById('btnAttack').disabled = true;
     }
