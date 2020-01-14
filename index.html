@@ -7,10 +7,14 @@
     <main>
         <section>
             <h3>Player</h3>
+            <section id="health">
+                <div id="playerHealthBar"></div>
+            </section>
             <p>Kill Bonus: <span id="killBonus"></span></p>
             <button id="btnSpawnEnemy" onclick="spawnEnemy()">Spawn Enemy</button>
             <button id="btnAttack" onclick="attack()">Attack</button><br />
             <button id="btnTown" onclick="town()">Goto Town</button>
+            <button id="btnSave" onclick="save()">Save</button>
         </section>
         <section>
             <h3>Enemy</h3>
@@ -28,13 +32,13 @@
                 <p>Experience: <span id="pExp"></span></p>
                 <p>Health: <span id="pCurrentHp"></span>/<span id="pMaxHp"></span></p>
                 <p>Mana: <span id="pCurrentMp"></span>/<span id="pMaxMp"></span></p>
-                <p>Strength: <span id="pStrength"></span></p>
-                <p>Intellect: <span id="pIntellect"></span></p>
-                <p>Agility: <span id="pAgility"></span></p>
+                <p>Strength: <span id="pStrength"></span> <button id="btnStrength" onclick="useStatPoint('strength')">+</button></p>
+                <p>Intellect: <span id="pIntellect"></span> <button id="btnIntellect" onclick="useStatPoint('intellect')">+</button></p>
+                <p>Agility: <span id="pAgility"></span> <button id="btnAgility" onclick="useStatPoint('agility')">+</button></p>
             </div>
             <div>
                 <h3>Skills</h3>
-                <p>Melee: <span id="pMelee"></span></p>
+                <p>Melee: <span id="pMelee"></span> <button id="btnMeleeSkill" onclick="useSkillPoint('melee')">+</button></p>
             </div>
             <div>
                 <h3>Inventory</h3>

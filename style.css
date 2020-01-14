@@ -27,3 +27,16 @@ main{
     border: solid 1px black;
     padding: 20px;
 }
+
+#health div{
+    width: 180px;  /* changed just for demo */
+    height: 20px;  /* just for demo */
+    background-size: 200% 100%;
+    background-image: linear-gradient(to right, whitesmoke 50%, #FF0000 50%);
+    /*animation: fill 2s ease infinite; */ /* just for demo */
+}
+@keyframes fill {
+    to {
+        background-position: -100% 0;
+    }
+}

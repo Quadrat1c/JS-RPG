@@ -29,6 +29,9 @@ let player = {
     },
 };
 
+// Player Inventory
+
+
 const playerExp = {
     1: 0,
     2: 250,
