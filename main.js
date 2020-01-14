@@ -1,16 +1,31 @@
 let tickCount = 0;
 let InBattle = false;
 
+let currentEnemyIndex;
+let currentEnemyHp = 0;
+
 function spawnEnemy() {
     let index = enemyTypes.length - 1;
-    let numGenerator = Math.round(Math.random()*index);
-    console.log(enemyTypes[numGenerator].name);
+    currentEnemyIndex = Math.round(Math.random()*index);
+    console.log(enemyTypes[currentEnemyIndex].name);
     document.getElementById('btnSpawnEnemy').disabled = true;
     InBattle = true;
+    currentEnemyHp = enemyTypes[currentEnemyIndex].health;
+    document.getElementById('eCurrentHealth').innerText = currentEnemyHp;
+    document.getElementById('eMaxHealth').innerText = currentEnemyHp;
+    document.getElementById('eName').innerText = enemyTypes[currentEnemyIndex].name;
+    document.getElementById('eLevel').innerText = enemyTypes[currentEnemyIndex].level;
+    document.getElementById('eMinDmg').innerText = enemyTypes[currentEnemyIndex].minDamage;
+    document.getElementById('eMaxDmg').innerText = enemyTypes[currentEnemyIndex].maxDamage;
+    document.getElementById('eDesc').innerText = enemyTypes[currentEnemyIndex].description;
     update();
 }
 
 function attack() {
+    document.getElementById('btnAttack').disabled = true;
+    console.log('attacking');
+
+    /*
     let selectedAbility;
 
     // lets get the current selected ability / radio button
@@ -29,6 +44,7 @@ function attack() {
     player2.health = player2.health - playerAttack;
     console.log(playerAttack);
     update();
+     */
 }
 
 // Updates ever tick or when an action happens
@@ -54,6 +70,11 @@ const update = () => {
 
     if (InBattle) {
         console.log('We are in battle.');
+
+
+        document.getElementById('btnAttack').disabled = false;
+    } else {
+        document.getElementById('btnAttack').disabled = true;
     }
     tickCount++;
 };

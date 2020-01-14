@@ -6,7 +6,18 @@
     <body bgcolor="#1a1111">
     <main>
         <section>
+            <h3>Player</h3>
             <button id="btnSpawnEnemy" onclick="spawnEnemy()">Spawn Enemy</button>
+            <button id="btnAttack" onclick="attack()">Attack</button>
+        </section>
+        <section>
+            <h3>Enemy</h3>
+            <p>Name: <span id="eName"></span></p>
+            <p>Level: <span id="eLevel"></span></p>
+            <p>Health: <span id="eCurrentHealth"></span>/<span id="eMaxHealth"></span></p>
+            <p>Damage: <span id="eMinDmg"></span> - <span id="eMaxDmg"></span></p>
+            <p>Description: <span id="eDesc"></span></p>
+            <p><span id="enemySection"></span></p>
         </section>
         <section id="statistics">
             <div>
